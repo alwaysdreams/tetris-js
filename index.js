@@ -7,8 +7,8 @@ const game = new Game();
 const view = new View(root, 320, 640, 20, 10);
 view.render(game.getState());
 
-// window.game = game;
-// window.view = view;
+window.game = game;
+window.view = view;
 
 document.addEventListener("keydown", event => {
     switch (event.keyCode) {
