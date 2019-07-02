@@ -25,9 +25,10 @@ export default class View {
         this.el.appendChild(this.canvas);
     }
 
-    render({ playfield }) {
+    render({ playfield, score, level }) {
         this.clearScreen();
         this.renderPlayField(playfield);
+        // this.renderScore(score, level);
     }
 
     clearScreen() {
@@ -47,6 +48,12 @@ export default class View {
             }
         }
     }
+
+    // renderScore(score, level) {
+    //     this.context.font = "30px Arial";
+    //     this.context.fillStyle = "white";
+    //     this.context.fillText("Hello World", 0, 0);
+    // }
 
     renderBlock(x, y, w, h, color) {
         this.context.fillStyle = color;
