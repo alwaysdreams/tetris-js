@@ -35,7 +35,13 @@
             }
         }
 
-        return { playfield, score: this.score,  level: this.level};
+        return {
+            playfield,
+            score: this.score,
+            level: this.level,
+            lines: this.lines,
+            nextPiece: this.nextPiece,
+        };
     }
 
     createPlayfield() {
