@@ -75,6 +75,7 @@ export default class View {
         this.context.textBaseline = 'middle';
         this.context.fillText('GAME OVER', this.w /2, this.h /2 - 48);
         this.context.fillText(`Score: ${score}`, this.w /2, this.h /2);
+        this.context.fillText('Press ENTER to Restart', this.w /2, this.h /2 + 48);
     }
 
     renderPlayField({ playfield }) {

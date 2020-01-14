@@ -8,6 +8,7 @@
 
     score = 0;
     lines = 0;
+    topOut = false;
     get level() {
         return Math.floor(this.lines * 0.1);
     }
@@ -41,7 +42,17 @@
             level: this.level,
             lines: this.lines,
             nextPiece: this.nextPiece,
+            isGameOver: this.topOut,
         };
+    }
+
+    reset() {
+        this.score = 0;
+        this.lines = 0;
+        this.topOut = false;
+        this.playfield = this.createPlayfield();
+        this.activePiece = this.createPiece();
+        this.nextPiece = this.createPiece();
     }
 
     createPlayfield() {
@@ -81,6 +92,7 @@
             case 'L':
                 piece.blocks = [
                     [0, 0, 0],
+
                     [3, 3, 3],
                     [3, 0, 0]
                 ];
@@ -119,7 +131,7 @@
         }
 
         piece.x = Math.floor((10 - piece.blocks[0].length) / 2);
-        piece.y = 0;
+        piece.y = -1;
 
         return piece;
     }
@@ -139,12 +151,18 @@
     }
 
     movePieceDown() {
+        if (this.topOut) return;
+
         this.activePiece.y += 1;
         if (this.hasCollision()) {
             this.activePiece.y -= 1;
             this.lockPiece();
             this.clearLines();
             this.updatePieces();
+        }
+
+        if (this.hasCollision()) {
+            this.topOut = true;
         }
     }
 
